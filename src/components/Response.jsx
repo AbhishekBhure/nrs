@@ -68,77 +68,86 @@ const Response = () => {
           {todos.map((todo, index) => (
             <li key={index}>
               {editIndex === index ? (
-                <div>
+                <div className="input-btns">
                   <input
                     type="text"
                     value={newTodo}
                     onChange={handleInputChange}
                     maxLength={maxCharater}
                   />
-                  <span>
-                    {newTodo.length} / {maxCharater}
-                  </span>
-                  <button
-                    className={
-                      isInputEmpty
-                        ? "edit-Response-btn grey"
-                        : "edit-Response-btn"
-                    }
-                    onClick={handleAddTodo}
-                    disabled={isInputEmpty || isTodoLimitReached}
-                  >
-                    {editIndex !== null ? (
-                      <span>
-                        {" "}
-                        <img src={save} alt="save" /> Save
-                      </span>
-                    ) : (
-                      <span>
-                        {" "}
-                        <img src={add} alt="addIcon" /> Add
-                      </span>
-                    )}
-                  </button>
-                  <button
-                    className="add-delete-Response-btn"
-                    onClick={handleCancel}
-                  >
-                    {" "}
-                    Cancel
-                  </button>
+                  <div className="edit-add-btn">
+                    <span className="characters">
+                      {newTodo.trim().length} / {maxCharater}
+                    </span>
+                    <button
+                      className={
+                        isInputEmpty
+                          ? "edit-Response-btn grey"
+                          : "edit-Response-btn"
+                      }
+                      onClick={handleAddTodo}
+                      disabled={isInputEmpty || isTodoLimitReached}
+                    >
+                      {editIndex !== null ? (
+                        <>
+                          <span>
+                            <img src={save} alt="save" />
+                          </span>
+                          <span>Save</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>
+                            <img src={add} alt="addIcon" />
+                          </span>
+                          <span>Add</span>
+                        </>
+                      )}
+                    </button>
+                    <button
+                      className="add-delete-Response-btn"
+                      onClick={handleCancel}
+                    >
+                      {" "}
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <p>
-                  {todo}
-                  <span>
-                    {todo.length}/{maxCharater}
-                  </span>
-                  <button
-                    className="edit-Response-btn"
-                    onClick={() => handleEdit(index)}
-                  >
-                    <span>
-                      <img src={edit} alt="editIcon" />
+                <div className="input-btns">
+                  <p className="todo">{todo} </p>
+
+                  <div className="edit-add-btn">
+                    <span className="characters">
+                      {todo.trim().length}/{maxCharater}
                     </span>
-                    Edit
-                  </button>
-                  <button
-                    className="add-delete-Response-btn"
-                    onClick={() => handleDelete(index)}
-                  >
-                    <span>
-                      <img src={trash} alt="trashIcon" />
-                    </span>
-                    Delete
-                  </button>
-                </p>
+                    <button
+                      className="edit-Response-btn"
+                      onClick={() => handleEdit(index)}
+                    >
+                      <span>
+                        <img src={edit} alt="editIcon" />
+                      </span>
+                      Edit
+                    </button>
+                    <button
+                      className="add-delete-Response-btn"
+                      onClick={() => handleDelete(index)}
+                    >
+                      <span>
+                        <img src={trash} alt="trashIcon" />
+                      </span>
+                      Delete
+                    </button>
+                  </div>
+                </div>
               )}
             </li>
           ))}
         </ul>
         <div className="response-input">
           {showInput && (
-            <div>
+            <div className="input-btns">
               <input
                 type="text"
                 value={newTodo}
@@ -147,31 +156,42 @@ const Response = () => {
                 maxLength={maxCharater}
               />
 
-              <button
-                className={
-                  isInputEmpty ? "edit-Response-btn grey" : "edit-Response-btn"
-                }
-                onClick={handleAddTodo}
-                disabled={isInputEmpty || isTodoLimitReached}
-              >
-                {editIndex !== null ? (
-                  <span>
-                    {" "}
-                    <img src={edit} alt="edit" /> Edit
-                  </span>
-                ) : (
-                  <span>
-                    {" "}
-                    <img src={add} alt="addIcon2" /> Add
-                  </span>
-                )}
-              </button>
-              <button onClick={handleCancel}>Cancel</button>
+              <div className="edit-add-btn">
+                <button
+                  className={
+                    isInputEmpty
+                      ? "edit-Response-btn grey"
+                      : "edit-Response-btn"
+                  }
+                  onClick={handleAddTodo}
+                  disabled={isInputEmpty || isTodoLimitReached}
+                >
+                  {editIndex !== null ? (
+                    <span>
+                      <img src={edit} alt="edit" /> Edit
+                    </span>
+                  ) : (
+                    <span>
+                      <img src={add} alt="addIcon2" /> Add
+                    </span>
+                  )}
+                </button>
+                <button
+                  className="add-delete-Response-btn"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           )}
         </div>
         <button
-          className="add-delete-Response-btn "
+          className={
+            todos.length >= 10
+              ? "add-delete-Response-btn-disable"
+              : "add-delete-Response-btn"
+          }
           onClick={() => setShowInput(true)}
           disabled={isTodoLimitReached || todos.length >= 10}
         >
