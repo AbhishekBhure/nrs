@@ -24,7 +24,52 @@
 
 ul > li {
   list-style: none;
+  padding: 10px 0px;
 }
+
+input{
+  border: none;
+  width: 60%;
+  white-space: normal !important; 
+  font-size: 16px;
+  font-weight: 700;
+  caret-color: #C2002E;
+}
+
+.characters{
+  color: #007B8F;
+}
+
+.add-delete-Response-btn-disable{
+  color: #7C8C93;
+  border-color: 2px solid #7C8C93;
+  padding: 7px;
+  background-color: transparent;
+  border-radius: 12px;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.todo{
+  width: 60%;
+  font-size: 18px;
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+.input-btns:focus-within {
+  border: 2px solid #007B8F; /* Add your desired blue color here */
+}
+
 
 .grey{
   background-color: gray;
@@ -61,4 +106,29 @@ ul > li {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+}
+
+.response-list{
+  width: 80%;
+}
+
+.response-input{
+  width: 80%;
+  overflow-x: hidden;
+}
+
+.input-btns{
+  width: 100%;
+  padding: 16px 24px 16px 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-add-btn{
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
