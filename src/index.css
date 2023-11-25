@@ -132,3 +132,33 @@ input:focus {
   gap: 10px;
   align-items: center;
 }
+
+@media (max-width: 767px) {
+  .response-body {
+    width: 80%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .response-input {
+    width: 100%;
+  }
+
+  .response-list {
+    width: 100%;
+  }
+
+  .input-btns {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .todo{
+    width: 100%;
+  }
+
+  .edit-add-btn {
+    
+  }
+}
