@@ -95,6 +95,7 @@ input:focus {
 
 .add-delete-Response-btn{
   padding: 7px;
+  margin: 10px 0px;
   background-color: #ffffff;
   border: #C2002E solid 2px;
   border-radius: 12px;
@@ -120,6 +121,7 @@ input:focus {
 .input-btns{
   width: 100%;
   padding: 16px 24px 16px 24px;
+  margin: 10px 0px;
   background-color: #ffffff;
   border-radius: 12px;
   display: flex;
