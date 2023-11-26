@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { add, trash, edit, save } from "../icons";
+import { add, add2, trash, edit, save } from "../icons";
 
 const Response = () => {
   const [todos, setTodos] = useState([]);
@@ -10,6 +10,8 @@ const Response = () => {
   const [isTodoLimitReached, setIsTodoLimitReached] = useState(false);
 
   var maxCharater = 150;
+
+  //adding a Todo/response
   const handleAddTodo = () => {
     if (editIndex !== null) {
       // Edit existing todo
@@ -33,11 +35,13 @@ const Response = () => {
     setIsInputEmpty(true);
   };
 
+  //handleInputChange
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
     setIsInputEmpty(e.target.value.trim() === "");
   };
 
+  //handleCancel
   const handleCancel = () => {
     setShowInput(false);
     setNewTodo("");
@@ -45,11 +49,13 @@ const Response = () => {
     setEditIndex(null);
   };
 
+  //handleEdit
   const handleEdit = (index) => {
     setEditIndex(index);
     setNewTodo(todos[index]);
   };
 
+  //handleDelete
   const handleDelete = (index) => {
     const updatedTodos = [...todos];
     updatedTodos.splice(index, 1);
@@ -65,6 +71,7 @@ const Response = () => {
     <div className="response-container">
       <div className="response-body">
         <ul className="response-list">
+          {/* mapping all todos */}
           {todos.map((todo, index) => (
             <li key={index}>
               {editIndex === index ? (
@@ -118,6 +125,7 @@ const Response = () => {
                   <p className="todo">{todo} </p>
 
                   <div className="edit-add-btn">
+                    {/* maxCharacters */}
                     <span className="characters">
                       {todo.trim().length}/{maxCharater}
                     </span>
@@ -171,9 +179,12 @@ const Response = () => {
                       <img src={edit} alt="edit" /> Edit
                     </span>
                   ) : (
-                    <span>
-                      <img src={add} alt="addIcon2" /> Add
-                    </span>
+                    <>
+                      <span>
+                        <img src={add2} alt="addIcon2" />
+                      </span>
+                      <span>Add</span>
+                    </>
                   )}
                 </button>
                 <button
